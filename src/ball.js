@@ -24,7 +24,7 @@ export default class Ball {
         if (objectCollisionDetected(this, this.game.paddle)) {
             this.speed.y = -this.speed.y;
             this.position.y = this.game.paddle.position.y - this.size;      
-        }     
+        }        
     }
 
     detectWallCollision() {
@@ -32,7 +32,7 @@ export default class Ball {
             this.speed.x = -this.speed.x;
         }
 
-        if (this.position.y + this.size > this.gameHeight || this.position.y < 0) {
+        if (this.position.y + this.size > this.gameHeight || this.position.y < 0) {            
             this.speed.y = -this.speed.y;
         }
     }    

@@ -12,6 +12,7 @@ export default class Brick {
     update() {
         if (objectCollisionDetected(this.game.ball, this)) {
             this.game.ball.speed.y = -this.game.ball.speed.y;
+            // this.game.ball.position.
         }
     }
 
