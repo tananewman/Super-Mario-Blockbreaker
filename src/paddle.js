@@ -34,7 +34,7 @@ export default class Paddle {
         if(this.position.x < 0) {
             this.position.x = 0;
         }
-        if(this.position.x  + this.width > this.gameWidth) {
+        if(this.position.x + this.width > this.gameWidth) {
             this.position.x = this.gameWidth - this.width;
         }
     }

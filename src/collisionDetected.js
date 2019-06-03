@@ -15,6 +15,7 @@ export function objectCollisionDetected(ball, gameObject) {
         ) {
             return true;
         } 
-
-    return false;
+        else {
+            return false;
+        }
 }
