@@ -1,8 +1,9 @@
 export default class InputHandler {
-    constructor(object) {
+    constructor(game, object) {
 
         const ARROW_KEY_LEFT = 37;
         const ARROW_KEY_RIGHT = 39;
+        const ESCAPE_KEY = 27;
 
         document.addEventListener('keydown', event => {
             switch(event.keyCode) {
@@ -13,6 +14,10 @@ export default class InputHandler {
                 case ARROW_KEY_RIGHT: 
                     object.moveRight();
                     break;
+
+                case ESCAPE_KEY:
+                    game.pauseGame();
+                    break;                    
             }
         });
 
@@ -29,5 +34,6 @@ export default class InputHandler {
                     break;
             }
         });
+
     }
 }

@@ -7,12 +7,14 @@ export default class Brick {
         this.position = position;
         this.width = 40;
         this.height = 40;
+        this.markedForDeletion = false;
     }
 
     update() {
         if (objectCollisionDetected(this.game.ball, this)) {
             this.game.ball.speed.y = -this.game.ball.speed.y;
-            // this.game.ball.position.
+            this.markedForDeletion = true;
+            // reset it somehow
         }
     }
 

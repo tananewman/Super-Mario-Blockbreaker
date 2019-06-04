@@ -3,8 +3,8 @@ import { objectCollisionDetected } from "./collisionDetected.js";
 export default class Ball {
     constructor(game) {
         this.img = document.getElementById('gameBall');
-        this.speed = { x: 2, y: 2 };
-        this.position = { x: 10, y: 10 };
+        this.speed = { x: 3, y: 2 };
+        this.position = { x: 10, y: 400 };
         this.size = 16;
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
@@ -25,7 +25,7 @@ export default class Ball {
             this.speed.y = -this.speed.y;
             this.position.y = this.game.paddle.position.y - this.size;      
         }        
-    }
+     }
 
     detectWallCollision() {
         if (this.position.x + this.size > this.gameWidth || this.position.x < 0) {

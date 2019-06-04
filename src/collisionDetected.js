@@ -17,12 +17,27 @@ export function objectCollisionDetected(ball, gameObject) {
             console.log("We got into a very very bad place :(")
         }
 
+        // // collision from side
+        // if (rightSideOfBall > leftSideOfObject || leftSideOfBall < rightSideOfObject) {
+        //     // if it came from the right side
+        //     ball.speed.x = -ball.speed.x;
+        // }
+
+        // // collison from top or bottom
+        // if (topOfBall < bottomOfObject || bottomOfBall > topOfObject) {
+        //     // console.log("collision from y called");
+
+        //     ball.speed.y = -ball.speed.y;
+        // }
+
+    //write collision from y
 
     if (bottomOfBall >= topOfObject
         && topOfBall <= bottomOfObject
         && rightSideOfBall >= leftSideOfObject 
         && leftSideOfBall <= rightSideOfObject
         ) {
+            // console.log("collision detected");
             return true;
         } 
         else {
