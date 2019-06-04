@@ -37,10 +37,15 @@ export function objectCollisionDetected(ball, gameObject) {
         && rightSideOfBall >= leftSideOfObject 
         && leftSideOfBall <= rightSideOfObject
         ) {
+            bottomOfBall = topOfObject;
+            topOfBall = bottomOfObject;
+            rightSideOfBall = leftSideOfObject;
+            leftSideOfBall = rightSideOfObject;
             // console.log("collision detected");
             return true;
         } 
         else {
             return false;
-        }
+        }   
 }
+

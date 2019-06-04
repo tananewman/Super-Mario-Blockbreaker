@@ -39,7 +39,8 @@ export default class Game {
     }
 
     updateGame(deltaTime) {
-        if (this.gamestate === GAMESTATE.PAUSED) return;
+        if (this.gamestate === GAMESTATE.PAUSED)    
+             return;
 
         this.gameObjects.forEach(object => object.update(deltaTime));
         this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion);
