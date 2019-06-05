@@ -10,10 +10,11 @@ export default class Brick {
         this.markedForDeletion = false;
     }
 
-    update() {
+    update(deltaTime) {
         if (objectCollisionDetected(this.game.ball, this)) {
             this.game.ball.speed.y = -this.game.ball.speed.y;
-            //this.markedForDeletion = true;
+            console.log(deltaTime);
+            this.markedForDeletion = true;
             // reset it somehow
         }
     }

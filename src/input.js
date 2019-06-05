@@ -1,6 +1,7 @@
 export default class InputHandler {
     constructor(game, object) {
 
+        const SPACEBAR = 32;
         const ARROW_KEY_LEFT = 37;
         const ARROW_KEY_RIGHT = 39;
         const ESCAPE_KEY = 27;
@@ -17,7 +18,10 @@ export default class InputHandler {
 
                 case ESCAPE_KEY:
                     game.pauseGame();
-                    break;                    
+                    break;  
+                case SPACEBAR:
+                    game.start();
+                    break;
             }
         });
 
@@ -34,6 +38,5 @@ export default class InputHandler {
                     break;
             }
         });
-
     }
 }
