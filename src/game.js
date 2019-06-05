@@ -1,7 +1,6 @@
 import Ball from "./ball.js";
 import Paddle from "./paddle.js";
 import InputHandler from "./input.js";
-import Brick from "./brick.js";
 import { buildLevel, level1, level2 } from "./level.js";
 import CanvasLayer from "./canvasLayer.js";
 
@@ -31,7 +30,6 @@ export default class Game {
     }
 
     start() {
-        console.log("start called");
         if (this.gamestate !== GAMESTATE.MENU && this.gamestate !== GAMESTATE.NEWLEVEL && this.gamestate !== GAMESTATE.GAMEOVER) { return; }
         this.lives = 3;
         this.bricks = buildLevel(this, this.levels[this.currentLevel]);        
@@ -79,8 +77,8 @@ export default class Game {
 
             this.ctx.fillStyle = "white";
             this.ctx.textAlign = "center";
-            this.ctx.font = " 80px";
-            this.ctx.fillText("Press Space to start", this.gameWidth / 2, this.gameHeight /2);
+            this.ctx.font = "80px";
+            this.ctx.fillText("Press Space to start", this.gameWidth / 2, this.gameHeight / 2);
         }
         if (this.gamestate === GAMESTATE.PAUSED) {
             this.ctx.rect(0, 0, this.gameWidth, this.gameHeight);
@@ -94,7 +92,7 @@ export default class Game {
 
             this.ctx.fillStyle = "white";
             this.ctx.textAlign = "center";
-            this.ctx.font = " 80px";
+            this.ctx.font = "80px";
             this.ctx.fillText("Game Over. Press space to restart.", this.gameWidth / 2, this.gameHeight / 2);
         }
     }
