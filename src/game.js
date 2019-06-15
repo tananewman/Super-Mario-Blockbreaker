@@ -12,7 +12,7 @@ const GAMESTATE = {
 };
 
 export default class Game {
-    constructor(gameWidth, gameHeight) {
+    constructor(gameWidth, gameHeight, sprites) {
         this.gamestate = GAMESTATE.MENU;
         this.lives = 3;
         this.gameWidth = gameWidth;
@@ -23,10 +23,11 @@ export default class Game {
         this.bricks = [];
         this.levels = [level1, level2];
         this.currentLevel = 0;
+        this.sprites = sprites;
         new InputHandler(this, this.paddle);
 
         const canvasLayer = new CanvasLayer(this.gameWidth, this.gameHeight);
-        this.ctx = canvasLayer.setupGameCanvas();
+        this.context = canvasLayer.setupGameCanvas();
     }
 
     start() {
@@ -49,8 +50,20 @@ export default class Game {
         }
     }
 
-    draw() {        
-        [...this.gameObjects, ...this.bricks].forEach(object => object.draw(this.ctx));
+    drawSky(context) {
+        for (let i = 0; i < 50; ++i) {
+            for (let k = 0; k < 37.5; ++k) {
+                this.sprites.drawTile('sky', context, i, k);
+            }
+        }   
+    }
+
+    draw() {     
+        this.drawSky(this.context);
+        this.ball.draw(this.context);
+        this.bricks.forEach(brick => brick.draw(this.context));
+        this.paddle.draw(this.context);        
+
         this.handleGameState();        
     }
 
@@ -71,29 +84,29 @@ export default class Game {
 
     handleGameState() {
         if(this.gamestate === GAMESTATE.MENU) {
-            this.ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-            this.ctx.fillStyle = "black";
-            this.ctx.fill();
+            this.context.rect(0, 0, this.gameWidth, this.gameHeight);
+            this.context.fillStyle = "black";
+            this.context.fill();
 
-            this.ctx.fillStyle = "white";
-            this.ctx.textAlign = "center";
-            this.ctx.font = "80px";
-            this.ctx.fillText("Press Space to start", this.gameWidth / 2, this.gameHeight / 2);
+            this.context.fillStyle = "white";
+            this.context.textAlign = "center";
+            this.context.font = "80px";
+            this.context.fillText("Press Space to start", this.gameWidth / 2, this.gameHeight / 2);
         }
         if (this.gamestate === GAMESTATE.PAUSED) {
-            this.ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-            this.ctx.fillStyle = "rgba(0,0,0,0.5)";
-            this.ctx.fill();
+            this.context.rect(0, 0, this.gameWidth, this.gameHeight);
+            this.context.fillStyle = "rgba(0,0,0,0.5)";
+            this.context.fill();
         }
         if (this.gamestate === GAMESTATE.GAMEOVER) {
-            this.ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-            this.ctx.fillStyle = "black";
-            this.ctx.fill();
+            this.context.rect(0, 0, this.gameWidth, this.gameHeight);
+            this.context.fillStyle = "black";
+            this.context.fill();
 
-            this.ctx.fillStyle = "white";
-            this.ctx.textAlign = "center";
-            this.ctx.font = "80px";
-            this.ctx.fillText("Game Over. Press space to restart.", this.gameWidth / 2, this.gameHeight / 2);
+            this.context.fillStyle = "white";
+            this.context.textAlign = "center";
+            this.context.font = "80px";
+            this.context.fillText("Game Over. Press space to restart.", this.gameWidth / 2, this.gameHeight / 2);
         }
     }
 }

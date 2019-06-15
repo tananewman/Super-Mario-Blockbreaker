@@ -6,7 +6,7 @@ export default class CanvasLayer {
 
     setupGameCanvas() {
         const canvas = document.createElement('canvas');
-        canvas.id = "gameScreen";
+        canvas.id = 'gameScreen';
         canvas.width = this.gameWidth;
         canvas.height = this.gameHeight;
         document.body.appendChild(canvas);

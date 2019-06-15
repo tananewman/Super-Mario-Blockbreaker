@@ -23,7 +23,6 @@ export default class Paddle {
     }
 
     draw(context) {
-        context.clearRect(0, 0, this.gameWidth, this.gameHeight);
         context.fillStyle = "red";
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }    
